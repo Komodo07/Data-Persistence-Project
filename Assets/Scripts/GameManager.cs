@@ -4,15 +4,20 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    public static GameManager Instance;
 
-    // Update is called once per frame
-    void Update()
+    public string playerName;
+
+    private void Awake() //Called when an object is created.
     {
-        
-    }
+        //Singleton pattern. If an instance already exists the new one is destroyed and the script exits.
+        if (Instance != null)
+        {
+            Destroy(gameObject);
+            return;
+        }
+
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
+    }    
 }
