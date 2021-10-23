@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 #if UNITY_EDITOR
 using UnityEditor;
@@ -10,12 +11,15 @@ using UnityEditor;
 public class MenuUIHandler : MonoBehaviour
 {
     public GameObject nameInput;
+    public string playerName;
 
     public void StartNew()
     {
-        if(nameInput.ToString() != null)
+        playerName = nameInput.GetComponent<TMP_InputField>().text;
+
+        if(playerName != null || playerName != "Enter your name")
         {
-            GameManager.Instance.playerName = nameInput.ToString();
+            GameManager.Instance.playerName = playerName;
         }
 
         SceneManager.LoadScene(1);        
