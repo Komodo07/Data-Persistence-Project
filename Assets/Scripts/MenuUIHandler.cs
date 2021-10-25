@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
@@ -8,10 +9,17 @@ using TMPro;
 using UnityEditor;
 #endif
 
+[DefaultExecutionOrder(1000)]
 public class MenuUIHandler : MonoBehaviour
 {
+    public Text bestScore;
     public GameObject nameInput;
-    public string playerName;
+    string playerName;
+
+    public void Start()
+    {
+        bestScore.text = "Best Score: " + GameManager.Instance.bestPlayerName + " " + GameManager.Instance.bestPlayerScore;
+    }
 
     public void StartNew()
     {
