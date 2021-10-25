@@ -23,6 +23,7 @@ public class GameManager : MonoBehaviour
 
         Instance = this;
         DontDestroyOnLoad(gameObject);
+        
         LoadBestPlayer();
     }
     
@@ -55,5 +56,15 @@ public class GameManager : MonoBehaviour
             bestPlayerName = data.bestPlayer;
             bestPlayerScore = data.bestScore;
         }
+    }
+
+    public void DetermineBestScore(int currentPoints)
+    {
+        if (currentPoints > int.Parse(bestPlayerScore))
+        {
+            bestPlayerName = playerName;
+            bestPlayerScore = currentPoints.ToString();
+            SaveBestPlayer();
+        }        
     }
 }
