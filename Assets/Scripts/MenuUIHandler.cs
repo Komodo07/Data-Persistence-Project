@@ -18,7 +18,7 @@ public class MenuUIHandler : MonoBehaviour
 
     public void Start()
     {
-        bestScore.text = "Best Score: " + GameManager.Instance.bestPlayerName + " " + GameManager.Instance.bestPlayerScore;
+        bestScore.text = GameManager.Instance.DisplayBestPlayer();
     }
 
     public void StartNew()
@@ -38,7 +38,7 @@ public class MenuUIHandler : MonoBehaviour
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #else
-        Application.Quit(); //Command only works in a built application.
+        Application.Quit();
 #endif
     }
 }

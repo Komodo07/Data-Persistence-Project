@@ -12,9 +12,8 @@ public class GameManager : MonoBehaviour
     public string bestPlayerName;
     public string bestPlayerScore;
 
-    private void Awake() //Called when an object is created.
+    private void Awake()
     {
-        //Singleton pattern. If an instance already exists the new one is destroyed and the script exits.
         if (Instance != null)
         {
             Destroy(gameObject);
@@ -58,9 +57,15 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public string DisplayBestPlayer()
+    {
+        return "Best Score: " + bestPlayerName + " " + bestPlayerScore;
+    }
+
     public void DetermineBestScore(int currentPoints)
     {
-        if (currentPoints > int.Parse(bestPlayerScore))
+        string path = Application.persistentDataPath + "/bestplayer.json";
+        if (!File.Exists(path) || currentPoints > int.Parse(bestPlayerScore))
         {
             bestPlayerName = playerName;
             bestPlayerScore = currentPoints.ToString();

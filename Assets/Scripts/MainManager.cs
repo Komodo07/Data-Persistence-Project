@@ -37,6 +37,7 @@ public class MainManager : MonoBehaviour
             }
         }
 
+        BestScore.text = GameManager.Instance.DisplayBestPlayer();
         ScoreText.text = "Score: " + GameManager.Instance.playerName + " 0";
     }
 
